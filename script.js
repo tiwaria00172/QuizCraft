@@ -24,9 +24,15 @@ function prepareQuiz() {
     return;
   }
 
-  const timer = document.getElementById("timerInput")?.value;
-  localStorage.setItem("quizData", input);
-  if (timer) localStorage.setItem("quizTimer", timer);
+const timerInput = document.getElementById("timerInput")?.value;
+localStorage.setItem("quizData", input);
+
+if (timerInput) {
+  localStorage.setItem("quizTimer", timerInput);
+} else {
+  localStorage.removeItem("quizTimer");  // ✅ This line fixes the bug
+}
+
 
   window.location.href = "quiz.html";
 }
